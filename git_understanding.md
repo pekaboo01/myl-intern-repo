@@ -1,0 +1,3 @@
+The conflict happened because the same line in the file was modified in two different branches. When merging, Git could not decide which version to keep. And so, in Github Desktop, I resolved the conflict by choosing one version of the file (use the modified file from main) and then completes the merge.
+
+I learned that Git conflicts happen when the same file is changed in different branches. To fix them, you need to decide how the changes should be combined so nothing important is lost. This showed me why communication and coordination when working in a team is very important to avoid conflicts.
