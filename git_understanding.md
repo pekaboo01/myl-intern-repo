@@ -46,3 +46,17 @@ Git bisect is much faster and more efficient than manually reviewing commits. In
 - When working on multiple tasks in the same file but want to commit each task separately.
 - When reviewing changes before making a permanent record.
 - When preparing commits with partial changes (only some lines of a file).
+
+=========================================================================================================
+
+1. Why is pushing directly to main problematic?
+
+Pushing directly to the main branch can be risky because it may introduce untested or incomplete changes to the codebase. In a team setting, this can break the project for everyone else, make it harder to track who made which changes, and reduce the overall stability of the repository.
+
+2. How do branches help with reviewing code?
+
+Branches allow developers to work on features, bug fixes, or experiments in isolation from the main branch. This separation makes it easier to review code before merging it, ensures that the main branch remains stable, and allows for structured collaboration, such as using pull requests or code reviews to check changes.
+
+3. What happens if two people edit the same file on different branches?
+
+If two people modify the same file on different branches, Git will keep their changes separate until the branches are merged. During the merge, if the changes conflict, Git will prompt for a manual resolution. This ensures that both contributions are considered and integrated carefully without automatically overwriting anyone’s work.
