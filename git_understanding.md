@@ -29,3 +29,20 @@ You would use git bisect when you know your code was working at some point, but 
 3. How does it compare to manually reviewing commits?
 
 Git bisect is much faster and more efficient than manually reviewing commits. Instead of looking at every single change, bisect uses a binary search, meaning it tests roughly half of the commits each time. Manual review can be very slow and prone to human error, especially in large projects, whereas bisect quickly isolates the problem commit while letting you focus only on testing the code behavior.
+
+=========================================================================================================
+
+1. Difference Between Staging and Committing?
+
+- Staging is the process of preparing changes to be committed. Changes are added to the staging area but are not yet part of the repository history.
+- Committing is the process of saving staged changes into the repository history as a snapshot.
+
+2. Why Git Separates These Two Steps?
+- Separation allows more control over which changes go into a commit.
+- Helps in organizing commits logically instead of committing everything at once.
+- Enables selective committing when working on multiple features or fixes simultaneously.
+
+3. When to Stage Changes Without Committing
+- When working on multiple tasks in the same file but want to commit each task separately.
+- When reviewing changes before making a permanent record.
+- When preparing commits with partial changes (only some lines of a file).
