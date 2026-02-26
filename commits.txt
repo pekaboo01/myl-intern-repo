@@ -2,3 +2,5 @@ vague commit
 
 overly detailed commit
 
+well-structured commit
+
