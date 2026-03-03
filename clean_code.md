@@ -68,3 +68,88 @@ These are the kind of issues that don’t necessarily stop the code from running
 3. Did formatting the code make it easier to read?
 
 Yes, running Prettier and ESLint made the code easier to read. Indentation, spacing, and semicolons were corrected, which improves clarity. Clean formatting helps you and your teammates quickly see the structure of the code, understand the logic, and reduces mistakes when making changes.
+
+=======================================================================================================================
+
+1. Research Best Practices for Naming Variables and Functions
+
+Here are widely accepted practices:
+
+_Variables_
+
+Be descriptive: Names should convey the purpose of the variable.
+
+Good - userAge (clearly stores a user's age)
+Bad - x (unclear what it stores)
+
+Use camelCase (JavaScript, Java, etc.) or snake_case (Python, Ruby)
+Avoid abbreviations unless widely known:
+
+Bad - usrAg
+Good - userAge
+
+Boolean variables should sound like yes/no questions:
+
+Good - isActive, hasPermission
+Bad - status (too vague)
+
+_Functions_
+
+Use verbs or verb phrases to indicate action:
+
+Good - calculateTotal(), sendEmail()
+Bad - total(), email()
+
+2. Example of Unclear Variable Names
+
+function m(d, a) {
+let t = 0;
+for (let i = 0; i < a.length; i++) {
+t += a[i];
+}
+return t / d;
+}
+
+let r = m(5, [10, 20, 30, 40, 50]);
+console.log(r);
+
+Issues:
+
+-Function m (no idea what it does)
+-Parameters d and a (unclear)
+-Variable t (unclear)
+-Variable r (unclear)
+
+3. Refactored Version for Clarity
+
+function calculateAverage(numberOfValues, values) {
+let totalSum = 0;
+for (let i = 0; i < values.length; i++) {
+totalSum += values[i];
+}
+return totalSum / numberOfValues;
+}
+
+let averageScore = calculateAverage(5, [10, 20, 30, 40, 50]);
+console.log(averageScore);
+
+Improvements:
+
+-calculateAverage (clearly describes the function)
+-numberOfValues and values (descriptive parameters)
+-totalSum (clearly describes what the variable stores)
+-averageScore (meaningful variable name)
+
+_Reflection_
+
+1. What makes a good variable or function name?
+
+A good variable or function name is one that clearly tells you what it is or what it does without needing extra explanation. For variables, the name should describe the data it holds. For example, `userAge` is better than just `x` because anyone reading the code can quickly understand that this variable stores the age of a user. For functions, the name should usually start with a verb to show the action it performs, like `calculateTotal()` or `sendEmail()`. Names should also be consistent, easy to read, and avoid unnecessary abbreviations. If someone new looks at your code, good names should make it almost self-explanatory.
+
+2. What issues can arise from poorly named variables?
+
+Poorly named variables and functions can make code very hard to read and understand. If a variable has a vague name like `t` or a function is called `m`, it is not clear what the code is doing. This can cause mistakes when someone tries to use or modify the code because they might misunderstand its purpose. Poor names can also make collaboration harder since other programmers will spend extra time figuring out what everything means. Over time, this can make the code messy and harder to maintain.
+
+3. How did refactoring improve code readability?
+
+Refactoring the code by giving variables and functions better names made it much easier to understand. For example, changing the function name from `m` to `calculateAverage` immediately tells you what the function does. Changing variable names like `t` to `totalSum` or `r` to `averageScore` makes it clear what each value represents. Overall, reading the code now feels smoother and more logical. You can almost understand the logic just by reading the names, without needing to follow each line carefully. This not only saves time but also reduces the chance of errors and makes it easier for others to work with the code.
