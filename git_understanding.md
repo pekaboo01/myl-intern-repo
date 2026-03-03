@@ -73,3 +73,36 @@ If two people modify the same file on different branches, Git will keep their ch
 2. What surprised you while testing these commands?
 
 Testing these commands highlighted how precise Git can be. I was surprised by how git cherry-pick allows selective application of changes without affecting the rest of a branch, which is incredibly powerful in long-running projects. Using git checkout main -- <file> also showed me how easy it is to undo mistakes without losing other work. git blame was enlightening because it quickly revealed the history of each line in a file, making collaboration and debugging much easier.
+
+=================================================================================================================
+
+1. What is a Pull Request (PR), and why is it used?
+
+A Pull Request (PR) is a feature in GitHub that allows a developer to propose changes made in a branch and request that those changes be reviewed before merging them into the main branch. It is used to compare differences between branches, discuss modifications, request improvements, and ensure code quality before integration.
+
+PRs are important because they create a structured review process. Instead of directly pushing changes to the main branch, team members can review the code, suggest improvements, and confirm that it meets project standards. This reduces errors, improves collaboration, and maintains stability in the repository.
+
+*Reflection*
+
+1. Why are PRs important in a team workflow?
+
+PRs are important because they ensure that code is reviewed before being merged. This helps catch bugs early, maintain coding standards, and improve overall quality. PRs also encourage collaboration since team members can discuss improvements before finalizing changes.
+
+2. What makes a well-structured PR?
+
+-A well-structured PR includes:
+-A clear and descriptive title
+-A detailed explanation of what was changed
+-The reason for the change
+-Screenshots or logs if needed
+-A link to the related issue
+-Clean and focused commits (no unrelated changes)
+
+A good PR makes it easy for reviewers to understand the purpose and impact of the changes.
+
+3. What did you learn from reviewing an open-source PR?
+
+From reviewing an open-source PR, I learned that clear communication is just as important as writing good code. Reviewers often focus on readability, structure, and long-term maintainability. I also noticed that feedback is specific and constructive, which helps improve the final output.
+
+This experience showed me that PRs are not just about merging code, but about improving quality through collaboration and discussion.
+
