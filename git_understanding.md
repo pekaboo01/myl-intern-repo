@@ -60,3 +60,16 @@ Branches allow developers to work on features, bug fixes, or experiments in isol
 3. What happens if two people edit the same file on different branches?
 
 If two people modify the same file on different branches, Git will keep their changes separate until the branches are merged. During the merge, if the changes conflict, Git will prompt for a manual resolution. This ensures that both contributions are considered and integrated carefully without automatically overwriting anyone’s work.
+
+============================================================================================================
+
+1. What does each command do and when would you use it?
+
+*git checkout main -- <file>* restores a specific file from the main branch without affecting other changes in your working branch. This is useful when you accidentally modify a file but want to revert it to the version in main without discarding other work.
+*git cherry-pick <commit>* applies a specific commit from another branch onto your current branch. This is valuable when you need a particular change from another branch without merging all the changes, allowing selective updates to maintain stability.
+**git log* displays the commit history of a branch, showing messages, authors, and timestamps. It is essential for understanding how a project has evolved, tracking down changes, and reviewing the sequence of commits.
+**git blame <file>* shows line-by-line information about who last modified each line and when. This helps identify the author of a specific change, debug issues, or understand why a particular modification was made.
+
+2. What surprised you while testing these commands?
+
+Testing these commands highlighted how precise Git can be. I was surprised by how git cherry-pick allows selective application of changes without affecting the rest of a branch, which is incredibly powerful in long-running projects. Using git checkout main -- <file> also showed me how easy it is to undo mistakes without losing other work. git blame was enlightening because it quickly revealed the history of each line in a file, making collaboration and debugging much easier.
