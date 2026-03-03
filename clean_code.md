@@ -264,3 +264,83 @@ Breaking down large functions into smaller ones is very helpful because it makes
 2. How did refactoring improve the structure of the code?
 
 Refactoring the original function into smaller ones improved the code a lot. Now, each part of the logic—like calculating averages, finding the highest or lowest grade, or printing student information—is in its own function. This separation of responsibilities makes the code cleaner and easier to follow. If we need to change how we calculate the average, we only need to update the `calculateAverage` function without touching anything else. The structure is now organized, logical, and much easier for others (or even ourselves in the future) to understand.
+
+======================================================================================================================
+
+1. Research the DRY Principle
+
+-DRY = Don’t Repeat Yourself
+-The idea is that every piece of knowledge or logic should exist in only one place in your code.
+
+Benefits of DRY:
+
+-Easier to maintain (you only need to update in one place)
+-Less chance of mistakes (no conflicting versions)
+-Cleaner, more readable code
+
+2. Example of Duplicated Code
+
+function printUserInfo(user1, user2) {
+
+    console.log("Name:", user1.name);
+    console.log("Age:", user1.age);
+    console.log("Email:", user1.email);
+
+    console.log("Name:", user2.name);
+    console.log("Age:", user2.age);
+    console.log("Email:", user2.email);
+
+}
+
+const user1 = { name: "Alice", age: 25, email: "alice@example.com" };
+const user2 = { name: "Bob", age: 30, email: "bob@example.com" };
+
+printUserInfo(user1, user2);
+
+Issues:
+
+-The printing logic for user1 and user2 is duplicated
+-If you want to change how user info is printed, you have to update both places
+-Hard to reuse for more than two users
+
+3. Refactored Version to Avoid Duplication
+
+function printSingleUser(user) {
+
+    console.log("Name:", user.name);
+    console.log("Age:", user.age);
+    console.log("Email:", user.email);
+
+}
+
+function printAllUsers(users) {
+
+    for (let i = 0; i < users.length; i++) {
+        printSingleUser(users[i]);
+        console.log("-----"); // separator
+    }
+
+}
+
+const users = [
+{ name: "Alice", age: 25, email: "alice@example.com" },
+{ name: "Bob", age: 30, email: "bob@example.com" }
+];
+
+printAllUsers(users);
+
+Improvements:
+
+-printSingleUser handles printing one user (no repetition)
+-printAllUsers loops through any number of users (scalable)
+-Changing the format now only requires updating printSingleUser
+
+_Reflection_
+
+1. What were the issues with duplicated code?
+
+Duplicated code makes programs harder to maintain and more error-prone. When the same logic appears in multiple places, you have to update every copy if something changes. This can easily lead to mistakes or inconsistencies. Duplication also makes the code longer, harder to read, and less reusable. For example, in our first version, printing user information was repeated for each user. If we wanted to add a new detail, we would have had to change it in multiple places, which is inefficient and risky.
+
+2. How did refactoring improve maintainability?
+
+Refactoring the code into a single function for printing a user eliminated repetition. Now, the logic exists in only one place. The main function that handles multiple users just calls this small function in a loop. This approach makes the code easier to read, update, and reuse. If we want to change the format of how user information is printed, we only need to change `printSingleUser`, and it automatically applies to all users. The code is cleaner, shorter, and much more maintainable.
