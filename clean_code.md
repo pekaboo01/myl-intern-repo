@@ -153,3 +153,114 @@ Poorly named variables and functions can make code very hard to read and underst
 3. How did refactoring improve code readability?
 
 Refactoring the code by giving variables and functions better names made it much easier to understand. For example, changing the function name from `m` to `calculateAverage` immediately tells you what the function does. Changing variable names like `t` to `totalSum` or `r` to `averageScore` makes it clear what each value represents. Overall, reading the code now feels smoother and more logical. You can almost understand the logic just by reading the names, without needing to follow each line carefully. This not only saves time but also reduces the chance of errors and makes it easier for others to work with the code.
+
+=======================================================================================================================
+
+1. Research Best Practices for Small, Focused Functions
+
+-Single Responsibility – Each function should do one thing.
+calculateAverage() → calculates average (Good)
+calculateAverageAndPrintReport() → doing two things at once (Wrong)
+-Short and readable – A function should be short enough to fit in one screen if possible.
+-Descriptive names – The function name should tell exactly what it does.
+-Avoid side effects – Functions should ideally return values instead of directly modifying global data.
+-Reuse and modularity – Small functions can be reused in multiple places.
+
+2. Example of a Long, Complex Function
+
+function processNumbers(numbers) {
+let sum = 0;
+let max = numbers[0];
+let min = numbers[0];
+
+    for (let i = 0; i < numbers.length; i++) {
+        console.log("Number:", numbers[i]);
+        sum += numbers[i];
+        if (numbers[i] > max) max = numbers[i];
+        if (numbers[i] < min) min = numbers[i];
+    }
+
+    let average = sum / numbers.length;
+    console.log("Sum:", sum);
+    console.log("Average:", average);
+    console.log("Max:", max);
+    console.log("Min:", min);
+
+}
+
+processNumbers([10, 20, 30, 5, 15]);
+
+Issues:
+
+-One function does everything → printing, calculating sum, max, min, average
+-Hard to reuse parts, like if you only wanted the average
+-Harder to debug
+
+3. Refactored Version with Small, Focused Functions
+
+function printNumbers(numbers) {
+for (let i = 0; i < numbers.length; i++) {
+console.log(numbers[i]);
+}
+}
+
+function calculateSum(numbers) {
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+sum += numbers[i];
+}
+return sum;
+}
+
+function findMax(numbers) {
+let max = numbers[0];
+for (let i = 1; i < numbers.length; i++) {
+if (numbers[i] > max) {
+max = numbers[i];
+}
+}
+return max;
+}
+
+function findMin(numbers) {
+let min = numbers[0];
+for (let i = 1; i < numbers.length; i++) {
+if (numbers[i] < min) {
+min = numbers[i];
+}
+}
+return min;
+}
+
+function printSummary(numbers) {
+let sum = calculateSum(numbers);
+let max = findMax(numbers);
+let min = findMin(numbers);
+let average = sum / numbers.length;
+
+console.log(`Sum: ${sum}`);
+console.log(`Max: ${max}`);
+console.log(`Min: ${min}`);
+console.log(`Average: ${average}`);
+}
+
+let numbers = [10, 20, 30, 5, 15];
+
+printNumbers(numbers);
+printSummary(numbers);
+
+Improvements:
+
+-Each function has one clear job
+-Logic is reusable (e.g., calculateAverage can be used anywhere)
+-Easier to read, test, and maintain
+
+_Reflection_
+
+1. Why is breaking down functions beneficial?
+
+Breaking down large functions into smaller ones is very helpful because it makes code easier to read, understand, and maintain. When each function has a single job, it is clear what it does and how it fits into the bigger picture. Small functions are also easier to test, debug, and reuse in different parts of the program. Without small functions, large blocks of code can become confusing, hard to modify, and prone to errors.
+
+2. How did refactoring improve the structure of the code?
+
+Refactoring the original function into smaller ones improved the code a lot. Now, each part of the logic—like calculating averages, finding the highest or lowest grade, or printing student information—is in its own function. This separation of responsibilities makes the code cleaner and easier to follow. If we need to change how we calculate the average, we only need to update the `calculateAverage` function without touching anything else. The structure is now organized, logical, and much easier for others (or even ourselves in the future) to understand.
