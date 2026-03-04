@@ -224,6 +224,7 @@
       "cspell --config cspell.json"
     ],
     "**/*.{js,json}": [
+      "eslint --fix",
       "cspell --config cspell.json"
     ]
   },
