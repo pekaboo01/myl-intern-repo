@@ -218,6 +218,15 @@
     "spellcheck": "cspell \"**/*.md\" --config cspell.json",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "**/*.md": [
+      "markdownlint --config .markdownlint.json",
+      "cspell --config cspell.json"
+    ],
+    "**/*.{js,json}": [
+      "cspell --config cspell.json"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
