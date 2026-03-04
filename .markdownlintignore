@@ -1,0 +1,5 @@
+# Ignore all markdown files temporarily
+*.md
+
+# Ignore node_modules just in case
+node_modules/
