@@ -423,3 +423,76 @@ The original code was complex because it used unnecessary variables and extra co
 2. How did refactoring improve it?
 
 Refactoring improved the code by removing unnecessary variables and simplifying the logic. Instead of storing intermediate values, the function now directly checks whether the number is even and prints the result immediately. This makes the code shorter, clearer, and easier to understand. The simplified version keeps the same functionality but is easier to maintain and modify in the future.
+
+======================================================================================================================
+
+1. Research best practices for writing comments and documentation.
+
+-Explaining why something is done (not what is obvious)
+-Explaining complex logic
+-Warning about side effects or limitations
+-Writing documentation for functions (what it expects and returns)
+
+Avoid comments when:
+
+-The code is already clear
+-The comment just repeats the code
+-You can improve the variable or function name instead
+
+2️. Example of Poorly Commented Code
+
+function calculateTotal(price, tax) {
+// declare total variable
+let total = 0;
+
+    // add price and tax
+    total = price + tax;
+
+    // return total
+    return total;
+
+}
+
+Issues:
+
+-They repeat what the code already says.
+-They don’t add any helpful explanation.
+-They make the code longer without adding value.
+-Anyone reading this code already understands:
+let total = 0;
+total = price + tax;
+return total;
+
+3. Improved Version
+
+/\*\*
+
+- Calculates the final amount to pay.
+- Assumes tax has already been computed separately.
+-
+- @param {number} price - Base price of the product
+- @param {number} tax - Pre-calculated tax amount
+- @returns {number} Final total amount
+  \*/
+  function calculateTotal(price, tax) {
+  return price + tax;
+  }
+
+Improvements:
+
+-No unnecessary inline comments
+-Uses documentation comment format
+-What the function does
+-What it expects
+-What it returns
+-Important assumption (tax already calculated)
+
+_Reflection_
+
+1. When should you add comments?
+
+Comments should be added when the code needs extra explanation that is not obvious. They are useful when explaining why something is done, especially if it follows a specific rule or business requirement. Comments are also helpful when describing what a function expects as input and what it returns as output. If the logic is complex or might confuse other developers, a short explanation can make the code easier to understand.
+
+2. When should you avoid comments and instead improve the code?
+
+Comments should be avoided when they only repeat what the code already says. For example, writing a comment like “add two numbers” above a line that clearly adds two numbers is unnecessary. Instead of adding more comments, it is better to improve variable and function names so the code explains itself. Clean and well-named code reduces the need for extra comments. In many cases, improving the structure of the code is better than adding more explanations.
