@@ -14,13 +14,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'   # upgraded from 18
 
       - name: Install dependencies
         run: npm ci
 
       - name: Run Markdown Lint
-        run: npx markdownlint "**/*.md"
+        run: npx markdownlint "**/*.md" --config .markdownlint.json
+
+      - name: Run ESLint
+        run: npx eslint "**/*.js" --fix
 
       - name: Run Spell Check
-        run: npx cspell "**/*.{md,js,json}"
+        run: npx cspell "**/*.{md,js,json}" --config cspell.json
