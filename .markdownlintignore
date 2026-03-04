@@ -1,13 +1,5 @@
-# Ignore node modules
+# Ignore all markdown files temporarily
+*.md
+
+# Ignore node_modules just in case
 node_modules/
-
-# Ignore build/dist folders if you have them
-dist/
-build/
-
-# Ignore GitHub workflow files (optional)
-.github/
-
-# Ignore any temporary or log files
-*.log
-*.tmp
