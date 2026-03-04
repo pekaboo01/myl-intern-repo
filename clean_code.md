@@ -496,3 +496,72 @@ Comments should be added when the code needs extra explanation that is not obvio
 2. When should you avoid comments and instead improve the code?
 
 Comments should be avoided when they only repeat what the code already says. For example, writing a comment like “add two numbers” above a line that clearly adds two numbers is unnecessary. Instead of adding more comments, it is better to improve variable and function names so the code explains itself. Clean and well-named code reduces the need for extra comments. In many cases, improving the structure of the code is better than adding more explanations.
+
+=======================================================================================================================
+
+1. Research strategies for handling errors and edge cases in code (include Guard Clauses).
+
+One common strategy is input validation. This means checking whether the input is the correct type and format before using it. For example, if a function expects an array, it should first confirm that the input is actually an array.
+
+Another strategy is using guard clauses. A guard clause checks for invalid conditions at the beginning of a function and exits early if something is wrong. This prevents the rest of the function from running with bad data and keeps the code easier to read.
+
+Handling edge cases is also important. Edge cases include situations like empty arrays, dividing by zero, null values, undefined values, or unexpected data types. Even if these cases do not happen often, they can break the program if they are not handled properly.
+
+Providing clear error messages is another helpful strategy. Instead of letting the program crash silently, the function can return a clear message or value that explains what went wrong.
+
+2. Example of a Function Without Proper Error Handling
+
+function calculateAverage(numbers) {
+let sum = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+
+    return sum / numbers.length;
+
+}
+
+This function assumes that the input will always be correct. It does not check whether the input is an array, whether the array is empty, or whether all elements inside the array are numbers. If the input is null, the function will crash. If the array is empty, it will divide by zero and return Infinity. If the array contains non-number values, it may return incorrect results.
+
+3. Refactored Function With Guard Clauses
+
+function calculateAverage(numbers) {
+
+    if (!Array.isArray(numbers)) {
+        console.log("Error: Input must be an array.");
+        return null;
+    }
+
+    if (numbers.length === 0) {
+        console.log("Error: Array cannot be empty.");
+        return null;
+    }
+
+    let sum = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+
+        if (typeof numbers[i] !== "number") {
+            console.log("Error: All elements must be numbers.");
+            return null;
+        }
+
+        sum += numbers[i];
+    }
+
+    return sum / numbers.length;
+
+}
+
+This version checks whether the input is valid before performing calculations. It uses guard clauses to stop the function early if something is wrong. It prevents division by zero, avoids crashes, and ensures that all elements are numbers. This makes the function safer and more reliable.
+
+_Reflection_
+
+1. What was the issue with the original code?
+
+The original function assumed that the input would always be valid. It did not check whether the input was an array, whether it was empty, or whether the elements were numbers. Because of this, the function could return incorrect results or crash when given invalid input. It only worked in perfect situations and was not designed to handle real-world problems.
+
+2. How does handling errors improve reliability?
+
+Handling errors improves reliability because it prevents the program from crashing and producing incorrect results. By using guard clauses, the function checks for invalid input at the beginning and stops execution if something is wrong. This makes the function more stable and predictable. Proper error handling makes the code safer to use and easier to maintain over time.
