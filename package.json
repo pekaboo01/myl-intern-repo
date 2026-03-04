@@ -219,15 +219,18 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*.md": [
-      "markdownlint --config .markdownlint.json",
-      "cspell --config cspell.json"
-    ],
-    "**/*.{js,json}": [
-      "eslint --fix",
-      "cspell --config cspell.json"
-    ]
-  },
+  "**/*.md": [
+    "markdownlint --config .markdownlint.json",
+    "cspell --config cspell.json"
+  ],
+  "**/*.js": [
+    "eslint --fix",
+    "cspell --config cspell.json"
+  ],
+  "**/*.json": [
+    "cspell --config cspell.json"
+  ]
+},
   "keywords": [],
   "author": "",
   "license": "ISC"
