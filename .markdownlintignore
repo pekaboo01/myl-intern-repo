@@ -1,0 +1,13 @@
+# Ignore node modules
+node_modules/
+
+# Ignore build/dist folders if you have them
+dist/
+build/
+
+# Ignore GitHub workflow files (optional)
+.github/
+
+# Ignore any temporary or log files
+*.log
+*.tmp
