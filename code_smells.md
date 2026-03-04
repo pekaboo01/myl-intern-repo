@@ -214,10 +214,10 @@ Names are now clear and consistent.
 
 In my code, I found several code smells including magic numbers, long functions, duplicate logic, deeply nested conditionals, inconsistent naming, and commented-out code. Some functions were doing too many things at once, and some values were hardcoded without explanation. There were also areas where logic was repeated instead of reused.
 
-## How did refactoring improve the readability and maintainability of the code?
+2. How did refactoring improve the readability and maintainability of the code?
 
 Refactoring improved the structure of the code by separating responsibilities into smaller functions and classes. It removed duplication and replaced magic numbers with clearly named constants. Deep nesting was reduced by using guard clauses, which made the logic easier to follow. Variable names were improved to better describe their purpose. Overall, the code became cleaner, shorter, and easier to understand.
 
-2. How can avoiding code smells make future debugging easier?
+3. How can avoiding code smells make future debugging easier?
 
 Avoiding code smells makes debugging easier because the code becomes more organized and predictable. When logic is not duplicated, fixing a bug in one place automatically fixes it everywhere. Smaller functions are easier to test and inspect. Clear names and simple structures reduce confusion when reading the code. This helps developers find problems faster and make changes with more confidence.
