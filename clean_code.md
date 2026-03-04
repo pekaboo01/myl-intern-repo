@@ -344,3 +344,82 @@ Duplicated code makes programs harder to maintain and more error-prone. When the
 2. How did refactoring improve maintainability?
 
 Refactoring the code into a single function for printing a user eliminated repetition. Now, the logic exists in only one place. The main function that handles multiple users just calls this small function in a loop. This approach makes the code easier to read, update, and reuse. If we want to change the format of how user information is printed, we only need to change `printSingleUser`, and it automatically applies to all users. The code is cleaner, shorter, and much more maintainable.
+
+======================================================================================================================
+
+1. Research common refactoring techniques.
+
+Rename variables/functions → Make names clearer
+Extract functions → Break big functions into smaller ones
+Remove unnecessary variables → Don’t store values you don’t need
+Remove unnecessary conditions → Avoid extra if statements
+Simplify logic → Replace complicated logic with clearer expressions
+Remove duplication (DRY) → Keep logic in one place
+Return early → Reduce deep nested if statements
+
+2. Example of Overly Complicated Code
+
+function checkNumber(num) {
+let result = "";
+let isEven = false;
+
+    if (num % 2 === 0) {
+        isEven = true;
+    } else {
+        isEven = false;
+    }
+
+    if (isEven === true) {
+        result = "The number is even.";
+    } else {
+        result = "The number is odd.";
+    }
+
+    console.log(result);
+
+}
+
+checkNumber(4);
+
+Issues?
+
+-An unnecessary variable isEven
+-An unnecessary variable result
+-Too many if statements
+-Extra logic that can be simplified
+
+3. Refactored (Simpler Version)
+
+function isEven(num) {
+return num % 2 === 0;
+}
+
+function printNumberType(num) {
+if (isEven(num)) {
+console.log("The number is even.");
+} else {
+console.log("The number is odd.");
+}
+}
+
+printNumberType(4);
+
+What Changed?
+
+Removed isEven
+Removed result
+Reduced unnecessary logic
+Made it shorter and clearer
+One function checks logic
+One function handles printing
+Each function has a single responsibility
+
+_Reflection_
+
+1. What made the original code complex?
+
+The original code was complex because it used unnecessary variables and extra conditional statements. It created a variable to store whether the number was even, even though that information could be checked directly. It also created another variable just to store a message before printing it. These extra steps made the function longer and harder to read. Even though the code worked correctly, it was doing more work than necessary.
+
+2. How did refactoring improve it?
+
+Refactoring improved the code by removing unnecessary variables and simplifying the logic. Instead of storing intermediate values, the function now directly checks whether the number is even and prints the result immediately. This makes the code shorter, clearer, and easier to understand. The simplified version keeps the same functionality but is easier to maintain and modify in the future.
