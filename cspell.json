@@ -31,6 +31,7 @@
     "trimend",
     "trimstart",
     "wrappy",
-    "yocto"
+    "yocto",
+    "Pywinauto"
   ]
 }
