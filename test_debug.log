@@ -34,3 +34,15 @@
 2026-03-13 11:34:11,691 - INFO - Typing text into Document control
 2026-03-13 11:34:11,752 - ERROR - Test failed: 'InvalidControl'
 2026-03-13 11:34:11,905 - INFO - Screenshot saved: screenshot_20260313_113411.png
+2026-03-16 10:14:29,869 - INFO - Launching Notepad
+2026-03-16 10:14:42,447 - INFO - Connecting to Notepad
+2026-03-16 10:14:42,551 - INFO - Waiting for window
+2026-03-16 10:14:42,703 - INFO - Locating document editor
+2026-03-16 10:14:42,776 - ERROR - Test failed: 'InvalidControl'
+2026-03-16 10:14:42,918 - INFO - Screenshot saved: screenshot_20260316_101442.png
+2026-03-16 10:16:36,245 - INFO - Launching Notepad
+2026-03-16 10:16:48,821 - INFO - Connecting to Notepad
+2026-03-16 10:16:48,893 - INFO - Waiting for window
+2026-03-16 10:16:49,034 - INFO - Locating document editor
+2026-03-16 10:16:49,192 - INFO - Typing text...
+2026-03-16 10:16:49,532 - INFO - Typing completed

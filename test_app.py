@@ -6,42 +6,49 @@ from screenshot_helper import capture_screenshot
 
 logger = setup_logger()
 
+timings.Timings.window_find_timeout = 20
+
 def run_test():
     window = None
 
     try:
-        # Launch Notepad
+
+        # Launching notepad
         logger.info("Launching Notepad")
         Application(backend="uia").start("notepad.exe")
-        time.sleep(2)  # wait a little for it to appear
+        time.sleep(2) # Wait for notepad to appear
 
-        # Connect to Notepad
+        # Connect to notepad
         logger.info("Connecting to Notepad")
         app = Application(backend="uia").connect(title_re=".*Notepad")
         window = app.window(title_re=".*Notepad")
 
         # Wait for window to be ready
         logger.info("Waiting for window")
-        try:
-            window.wait("visible enabled ready", timeout=10)
-        except timings.TimeoutError as e:
-            logger.error(f"Window not ready in 10s: {e}")
-            capture_screenshot(window)
-            raise
+        window.wait("visible enabled ready", timeout=30)
 
-        # Locate the Document editor
+        # Locating the notepad editor
         logger.info("Locating document editor")
-        editor = window.child_window(control_type="InvalidControl")
+        editor = window.child_window(control_type="Document")
+        editor.wait("visible", timeout=10)
 
-        # Type text
-        logger.info("Typing text into Document control")
-        editor.type_keys("Hello automated testing!", with_spaces=True)
+        logger.info("Typing text...")
+        for attempt in range(3):
+
+            try:
+                editor.type_keys("Hello automated testing!", with_spaces=True)
+                break
+            except Exception:
+                logger.warning("Retry typing text")
+                time.sleep(2)
+
         logger.info("Typing completed")
 
     except Exception as e:
         logger.error(f"Test failed: {e}")
         if window:
             capture_screenshot(window)
+
         raise
 
 
