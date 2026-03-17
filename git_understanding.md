@@ -181,6 +181,116 @@ _git cherry-pick <commit>_ applies a specific commit from another branch onto yo
 
 Testing these commands highlighted how precise Git can be. I was surprised by how git cherry-pick allows selective application of changes without affecting the rest of a branch, which is incredibly powerful in long-running projects. Using git checkout main -- <file> also showed me how easy it is to undo mistakes without losing other work. git blame was enlightening because it quickly revealed the history of each line in a file, making collaboration and debugging much easier.
 
+3. Hands-on output:
+
+_git checkout main_:
+Branches:
+-main
+-practice/advanced-git
+File used: file.txt (has a text 'stage')
+
+Changes: In the practice/advanced-git branch, I added a one line text 'Added in practice branch' in a new line.
+
+Terminal commands used and outputs:
+
+PS C:\Users\johnm> cd C:\intern\myl-intern-repo
+PS C:\intern\myl-intern-repo> git checkout main
+Updating files: 100% (2547/2547), done.
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+PS C:\intern\myl-intern-repo> git checkout -b practice/advanced-git
+Switched to a new branch 'practice/advanced-git'
+PS C:\intern\myl-intern-repo> git add file.txt
+PS C:\intern\myl-intern-repo> git commit -m "Add line in practice branch" --no-verify
+[practice/advanced-git 584e53f] Add line in practice branch
+1 file changed, 0 insertions(+), 0 deletions(-)
+PS C:\intern\myl-intern-repo> git checkout main -- file.txt
+
+Result:
+The file.txt in practice/advanced-git got restored from the main branch which only contains a text 'stage'.
+
+_git cherry-pick_:
+Terminal commands used and outputs:
+
+PS C:\intern\myl-intern-repo> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+PS C:\intern\myl-intern-repo> git log practice/advanced-git --oneline
+584e53f (practice/advanced-git) Add line in practice branch
+PS C:\intern\myl-intern-repo> git cherry-pick 584e53f
+[main b3b2001] Add line in practice branch
+Date: Tue Mar 17 11:21:03 2026 +0800
+1 file changed, 0 insertions(+), 0 deletions(-)
+PS C:\intern\myl-intern-repo> git log --oneline
+b3b2001 (HEAD -> main) Add line in practice branch
+
+Result:
+The file.txt in main branch added a new text 'Added in practice branch' in a new line. This added text was from the commit of practice/advanced-git branch (584e53f (practice/advanced-git) Add line in practice branch), then applied to the current branch (main branch) using the git cherry-pick command.
+
+_git log_:
+Terminal commands used and outputs:
+
+PS C:\intern\myl-intern-repo> git log --oneline --graph --all
+
+- b3b2001 (HEAD -> main) Add line in practice branch
+  | _ 584e53f (practice/advanced-git) Add line in practice branch
+  |/
+  | _ d9affe3 (refs/stash) WIP on conflict-branch: a133ee3 convert txt files to UTF-8
+  | |\
+  | | _ 03d563d index on conflict-branch: a133ee3 convert txt files to UTF-8
+  | |/
+  | | _ ee829c8 (conflict-branch) Merge branch 'main' of https://github.com/pekaboo01/myl-intern-repo into conflict-branch
+  | |/|
+  | |/
+  |/|
+- | 0fe4e55 (origin/practice/advanced-git, origin/main, origin/HEAD) updated git_understanding.md with hands-on output proof
+- | 765c3af updated cspell.json
+- | 03fb92e updated git_understanding.md with terminal commands/output
+- | e639303 Version 4 - additional change
+- | 6bce3cb Version 3 - broken (intentional bug)
+- | dfd05d8 Version 2 - still working
+- | ba4ad08 Version 1 - working
+- | 83d4770 redo
+- | 22d339b Version 1 - working
+- | 5685b24 redo
+- | 31b1768 Add app.js with intentional bug for git bisect
+- | d20c171 redo bisect using app.js
+- | fc1bd34 updated terminal_knowledge.md
+- | 93f653b updated e2e-testing-into.md
+- | 9fea2e0 Add pywinauto flaky test and reflection md
+- | 4f999d8 Update pywinautp-debugging.md reflection with more brief explanation
+- | b05b99c add debugging & handling common test failures
+- | 90b2496 add screenshot for safechain installation
+- | 60ce455 add automating WebViews inside the Windows App
+- | 86f3ebe add integrating pywinauto ci/cd
+- | 6fc85fc added test file from automating ui elements
+- | 961dfc7 add interacting with windows ui elements reflection
+- | eaed6d7 add automated E2E reflection
+- | 9582002 add understanding pywinauto reflection
+- | 8907fa6 update cspell
+- | 53de4e8 add pywinauto
+- | bcba36c (origin/new-branch, new-branch) Merge pull request #58 from pekaboo01/new-branch
+  |\ \
+  | _ \ e45fffe Merge branch 'new-branch' of https://github.com/pekaboo01/myl-intern-repo into new-branch
+  | |\ \
+  | | _ \ d5563e2 Merge branch 'main' into new-branch
+  | | |\ \
+  | |\_|/ /
+  |/| | |
+- | | | 0a5efe8 update
+  | _ | | 2ee454c update artifact V4
+  | |/ /
+  | _ | 02638dd test CI/CD
+  | _ | 70b21dc fix typo
+  | _ | faaf387 update markdown ignore
+
+_git blame_:
+Terminal commands used and outputs:
+
+PS C:\intern\myl-intern-repo> git blame file.txt
+9b6d9569 (pekaboo01 2026-03-17 11:39:29 +0800 1) Stage
+9b6d9569 (pekaboo01 2026-03-17 11:39:29 +0800 2) Added in practice branch
+
 =================================================================================================================
 
 1. What is a Pull Request (PR), and why is it used?
