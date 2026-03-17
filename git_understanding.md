@@ -6,15 +6,34 @@ I learned that Git conflicts happen when the same file is changed in different b
 
 1. What makes a good commit message?
 
-A good commit message is clear, short, and specific. It explains what was changed and sometimes why it was changed. It should be easy to understand without being too long. A well-written commit message helps anyone quickly understand the purpose of the change.
+A good commit message is clear, short, and specific. It explains what was changed and sometimes why. It should be easy to understand without reading the entire code. A well-written commit message helps anyone quickly understand the purpose of the change.
 
 2. How does a clear commit message help in team collaboration?
 
-Clear commit messages help team members understand changes without reading all the code. When working in a team, developers rely on commit history to track progress and fix issues. Good commit messages make collaboration smoother and reduce confusion.
+Clear commit messages help team members understand changes without having to read all the code. In a team project, developers rely on commit history to track progress, debug, or review features. Good commit messages make collaboration smoother and reduce confusion.
 
 3. How can poor commit messages cause issues later?
 
-Poor commit messages like “fix” or “update” do not explain what was changed. This can cause problems later when someone tries to debug or review old changes. Without clear messages, it becomes harder to understand the history of the project, which can slow down development.
+Poor commit messages like “fix” or “update” do not explain what was changed. This can cause problems later when debugging or reviewing old commits. Without clear messages, it becomes harder to understand the history of the project, slowing down development and increasing the chance of errors.
+
+Proof of hands-on commits in commits.txt:
+
+PS C:\intern\myl-intern-repo> git log --oneline -- commits.txt
+a5d6b31 Improve test case formatting
+7f478f9 fixed the issue where the test file was not properly structured because I forgot to include the correct formatting and indentation and this might affect future test cases if not corrected immdiately
+65bbd70 fixed stuff
+
+Description of each commit:
+-The first commit, fixed stuff, is vague. It provides almost no information about what was changed. While it technically records a change, it does not help anyone reading the commit history understand the purpose of the update.
+
+-The second commit, fixed the issue where the test file was not properly structured because I forgot to include the correct formatting and indentation and this might affect future test cases if not corrected immdiately, is overly detailed. Although it clearly explains what was done, the message is too long for a commit log. It reads more like a paragraph and is difficult to scan quickly, which reduces clarity.
+
+-The third commit, Improve test case formatting, is well-structured. It is concise, clear, and communicates exactly what was changed in a single line. This makes it easy to read in the commit history while providing enough context for someone reviewing the code later.
+
+File contents in commits.txt:
+vague commit
+overly detailed commit
+well-structured commit
 
 ==================================================================================================
 
